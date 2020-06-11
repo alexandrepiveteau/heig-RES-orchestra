@@ -1,5 +1,5 @@
 const MULTICAST_ADDR="239.1.1.100"
-const PORT=9009
+const PORT=2205
 
 const dgram = require('dgram');
 const udpSocket = dgram.createSocket('udp4');

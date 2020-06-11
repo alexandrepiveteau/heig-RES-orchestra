@@ -5,5 +5,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Alexandre Piveteau & Guy-Laurent Subri"
+  "author": "Alexandre Piveteau & Guy-Laurent Subri",
+  "dependencies" : {
+      "uuid" : "8.1.0"
+  }
 }

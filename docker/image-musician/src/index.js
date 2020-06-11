@@ -1,7 +1,9 @@
+
 const MULTICAST_ADDR="239.1.1.100"
-const PORT=9009
+const PORT=2205
 const INTERVAL=1000
 
+const { v4: uuidv4 } = require('uuid');
 const dgram = require('dgram');
 const server = dgram.createSocket('udp4');
 
@@ -20,9 +22,10 @@ map.set("violin", "gzi-gzi");
 map.set("drum", "boum-boum");
 
 const sound = map.get(type);
+const uuid = uuidv4();
 
 function sendSound() {
-  console.log("Sending my sound as a " + type);
+  console.log("Sending my sound as a " + type + " with uuid " + uuid);
   server.send(sound, 0, sound.length, PORT, MULTICAST_ADDR);
 }
 
