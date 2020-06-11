@@ -1,15 +1,47 @@
 const MULTICAST_ADDR="239.1.1.100"
-const PORT=2205
+const UDP_PORT=9009
+const TCP_PORT=2205
 
+var ip = require("ip");
 const dgram = require('dgram');
-const udpSocket = dgram.createSocket('udp4');
+const net = require('net');
+const moment = require('moment');
 
-udpSocket.on("error", (err) => {
-    console.log("Got error: ${err.stack}");
+const orchestra = new Map();
+
+const udpSocket = dgram.createSocket('udp4');
+const tcp = net.createServer((socket) => {
+    var json = [];
+    orchestra.forEach((value, key) => {
+        var delta = moment().subtract(10, 's').diff(value.lastSound);
+        console.log("Time diff for uuid " + key + ": " + delta);
+        if (delta <= 0) {
+            json.push({
+                "uuid" : key,
+                "instrument" : value.instrument,
+                "activeSince": value.activeSince
+            });
+        }
+    });
+    socket.write(JSON.stringify(json));
 });
 
+
 udpSocket.on("message", (msg, info) => {
-    console.log("Got msg: " + msg);
+    var musician = JSON.parse(msg);
+
+    if (orchestra.has(musician.uuid)) {
+        orchestra.get(musician.uuid).lastSound = moment().format();
+    } else {
+        orchestra.set(musician.uuid, {
+            "uuid" : musician.uuid,
+            "instrument" : musician.instrument,
+            "lastSound" : moment().format(),
+            "activeSince" : moment().format()
+        });
+    }
+
+    console.log("Updated " + musician.uuid + "'s information");
 });
 
 udpSocket.on("listening", () => {
@@ -18,4 +50,5 @@ udpSocket.on("listening", () => {
     console.log("Listening on " + address.address);
 });
 
-udpSocket.bind(PORT);
+udpSocket.bind(UDP_PORT);
+tcp.listen(TCP_PORT, ip.address());

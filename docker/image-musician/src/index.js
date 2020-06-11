@@ -1,5 +1,5 @@
 const MULTICAST_ADDR="239.1.1.100"
-const PORT=2205
+const PORT=9009
 const INTERVAL=1000
 
 const { v4: uuidv4 } = require('uuid');
