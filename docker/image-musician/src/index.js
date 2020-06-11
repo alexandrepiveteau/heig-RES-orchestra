@@ -1,3 +1,7 @@
+const BROADCAST_ADDR="233.255.255.255"
+const PORT=8080
+const INTERVAL=1000
+
 const dgram = require('dgram');
 const server = dgram.createSocket('udp4');
 
@@ -18,8 +22,8 @@ map.set("drum", "boum-boum");
 const sound = map.get(type);
 
 function sendSound() {
-  console.log("Sending my sound");
-  server.send(sound, 0, sound.length, 8080, '233.255.255.255');
+  console.log("Sending my sound as a " + type);
+  server.send(sound, 0, sound.length, PORT, BROADCAST_ADDR);
 }
 
-setInterval(sendSound, 1000);
+setInterval(sendSound, INTERVAL);
