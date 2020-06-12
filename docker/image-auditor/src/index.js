@@ -59,6 +59,7 @@ tcp.on("connection", (socket) => {
     });
 
     socket.write(JSON.stringify(json, null, 2));
+    socket.write("\n");
     socket.end();
 });
 
