@@ -1,6 +1,7 @@
 const MULTICAST_ADDR="239.1.1.100"
 const UDP_PORT=9009
 const TCP_PORT=2205
+const ACTIVE_TIME=5 // in seconds
 
 var ip = require("ip");
 const dgram = require('dgram');
@@ -13,7 +14,7 @@ const udpSocket = dgram.createSocket('udp4');
 const tcp = net.createServer((socket) => {
     var json = [];
     orchestra.forEach((value, key) => {
-        var delta = moment().subtract(10, 's').diff(value.lastSound);
+        var delta = moment().subtract(ACTIVE_TIME, 's').diff(value.lastSound);
         console.log("Time diff for uuid " + key + ": " + delta);
         if (delta <= 0) {
             json.push({
@@ -24,6 +25,7 @@ const tcp = net.createServer((socket) => {
         }
     });
     socket.write(JSON.stringify(json));
+    socket.close();
 });
 
 
