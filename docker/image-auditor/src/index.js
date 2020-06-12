@@ -16,12 +16,15 @@ const tcp = net.createServer((socket) => {
     orchestra.forEach((value, key) => {
         var delta = moment().subtract(ACTIVE_TIME, 's').diff(value.lastSound);
         console.log("Time diff for uuid " + key + ": " + delta);
-        if (delta <= 0) {
+
+        if (delta <= 0) { // add to send value
             json.push({
                 "uuid" : key,
                 "instrument" : value.instrument,
                 "activeSince": value.activeSince
             });
+        } else { // clean orchestra
+            orchestra.delete(key);
         }
     });
     socket.write(JSON.stringify(json, null, 2));
