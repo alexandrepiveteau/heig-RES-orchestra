@@ -14,8 +14,6 @@ map.set("flute", "trulu");
 map.set("violin", "gzi-gzi");
 map.set("drum", "boum-boum");
 
-const sound = map.get(type);
-
 // When socket is ready, send sound
 server.on("listening", () => {
     setInterval(sendSound, INTERVAL);
@@ -38,5 +36,6 @@ if (process.argv.length != 3) {
 }
 
 const type = process.argv[2];
+const sound = map.get(type);
 
 server.bind(PORT);
