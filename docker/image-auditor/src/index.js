@@ -24,8 +24,8 @@ const tcp = net.createServer((socket) => {
             });
         }
     });
-    socket.write(JSON.stringify(json));
-    socket.close();
+    socket.write(JSON.stringify(json, space=2));
+    socket.end();
 });
 
 
