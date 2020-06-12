@@ -3,15 +3,9 @@ const PORT=9009
 const INTERVAL=1000
 
 const { v4: uuidv4 } = require('uuid');
+const uuid = uuidv4();
 const dgram = require('dgram');
 const server = dgram.createSocket('udp4');
-
-if (process.argv.length != 3) {
-    console.log('Please provide one argument');
-    process.exit(1);
-}
-
-const type = process.argv[2];
 
 const map = new Map();
 map.set("piano", "ti-ta-ti");
@@ -21,7 +15,11 @@ map.set("violin", "gzi-gzi");
 map.set("drum", "boum-boum");
 
 const sound = map.get(type);
-const uuid = uuidv4();
+
+// When socket is ready, send sound
+server.on("listening", () => {
+    setInterval(sendSound, INTERVAL);
+});
 
 function sendSound() {
     console.log("Sending my sound as a " + type + " with uuid " + uuid);
@@ -33,16 +31,12 @@ function sendSound() {
     server.send(msg, 0, msg.length, PORT, MULTICAST_ADDR);
 }
 
-server.on("error", (err) => {
-    console.log("Got error: ${err.stack}");
-});
+// Start processing
+if (process.argv.length != 3) {
+    console.log('Please provide one argument');
+    process.exit(1);
+}
 
-server.on("message", (msg, info) => {
-    console.log("Got msg: ${msg}");
-});
-
-server.on("listening", () => {
-    setInterval(sendSound, INTERVAL); // When the socket is ready, send msg
-});
+const type = process.argv[2];
 
 server.bind(PORT);
