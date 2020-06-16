@@ -138,7 +138,7 @@ system.
 | #  | Topic |
 | --- | --- |
 |Question | How can we represent the system in an **architecture diagram**, which gives information both about the Docker containers, the communication protocols and the commands? |
-| | *Insert your diagram here...* |
+| | ![diagram](images/diagram.png) |
 |Question | Who is going to **send UDP datagrams** and **when**? |
 | | Every musician is going to send UDP datagrams at a regular pace (1/sec) |
 |Question | Who is going to **listen for UDP datagrams** and what should happen when a datagram is received? |
