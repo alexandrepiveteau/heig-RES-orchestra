@@ -36,6 +36,12 @@ if (process.argv.length != 3) {
 }
 
 const type = process.argv[2];
+
+if (! map.has(type)) {
+    console.log('The given instrument is unknown.');
+    process.exit(1);
+}
+
 const sound = map.get(type);
 
 server.bind(PORT);

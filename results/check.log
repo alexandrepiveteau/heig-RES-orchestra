@@ -1,0 +1,43 @@
+origin	git@github.com:alexandrepiveteau/heig-RES-orchestra.git (fetch)
+origin	git@github.com:alexandrepiveteau/heig-RES-orchestra.git (push)
+Starting auditor container "7e34c1fa8869769a450f89d921edd89dbfa803aac96c74180a5591a6c7797db9"
+Starting auditor container "fb48fc05bf618afe5769cb8587628aecd51974000faf02ee7feb888e25869387"
+Starting auditor container "6b682ec7066db2ebbb21d400d03405c763797a8037559a6f44252f7aff3b21d7"
+Starting auditor container "536f0bcd99fadabc7787fc84e673f6e29287872ca45b56843df5d42cad1b6d21"
+Starting auditor container "4d88238230e31c2c04d3e55abbc4ce14bb6b99296dcfb4931aca8185406d2e45"
+Starting auditor container "efd51e4f4abb0f0acd14434f39147c7eb65831b0a3accf94df8bfd603e46c022"
+Starting auditor container "5cb8a02303ae63e7bbee0cfc6ad50345455dea8fbc0ad2b68ea18947d50637a6"
+Starting auditor container "5fc61023237a8a4aafef8e7128a18b6bb011c785e2f2a744bc16db1024a5c60b"
+Starting auditor container "6e4776b8566fd2c7182f91db0a88ef081b003dee7d528f36698e72a8ce7f8438"
+Starting auditor container "bb9d8041e7fc5f5cb2c3f44495e6acd48dd17e4f4d284f66aaf7d8ff7ed858db"
+Starting auditor container "93453fa9625eda38a4e7217e1d78719af46be2935915dfb58eeef78c3687439b"
+11 containers have been started.
+5fc61023237a8a4aafef8e7128a18b6bb011c785e2f2a744bc16db1024a5c60b : index.js,piano
+5cb8a02303ae63e7bbee0cfc6ad50345455dea8fbc0ad2b68ea18947d50637a6 : index.js,violin
+7e34c1fa8869769a450f89d921edd89dbfa803aac96c74180a5591a6c7797db9 : index.js,piano
+6b682ec7066db2ebbb21d400d03405c763797a8037559a6f44252f7aff3b21d7 : index.js,drum
+fb48fc05bf618afe5769cb8587628aecd51974000faf02ee7feb888e25869387 : index.js,drum
+4d88238230e31c2c04d3e55abbc4ce14bb6b99296dcfb4931aca8185406d2e45 : index.js,flute
+bb9d8041e7fc5f5cb2c3f44495e6acd48dd17e4f4d284f66aaf7d8ff7ed858db : index.js,violin
+536f0bcd99fadabc7787fc84e673f6e29287872ca45b56843df5d42cad1b6d21 : index.js,flute
+6e4776b8566fd2c7182f91db0a88ef081b003dee7d528f36698e72a8ce7f8438 : index.js,trumpet
+efd51e4f4abb0f0acd14434f39147c7eb65831b0a3accf94df8bfd603e46c022 : index.js,flute
+93453fa9625eda38a4e7217e1d78719af46be2935915dfb58eeef78c3687439b : index.js
+Auditor validation: success: ["drum","drum","flute","flute","flute","piano","piano","trumpet","violin","violin"]
+There are 10 musicians, let's kill one
+killed 5fc61023237a8a4aafef8e7128a18b6bb011c785e2f2a744bc16db1024a5c60b
+Auditor validation: success: ["drum","drum","flute","flute","flute","piano","trumpet","violin","violin"]
+Scheduling a new test
+There are 9 musicians, let's kill one
+killed 536f0bcd99fadabc7787fc84e673f6e29287872ca45b56843df5d42cad1b6d21
+Auditor validation: success: ["drum","drum","flute","flute","piano","trumpet","violin","violin"]
+Scheduling a new test
+There are 8 musicians, let's kill one
+killed fb48fc05bf618afe5769cb8587628aecd51974000faf02ee7feb888e25869387
+Auditor validation: success: ["drum","flute","flute","piano","trumpet","violin","violin"]
+Scheduling a new test
+There are 7 musicians, let's kill one
+killed 6b682ec7066db2ebbb21d400d03405c763797a8037559a6f44252f7aff3b21d7
+Auditor validation: success: ["flute","flute","piano","trumpet","violin","violin"]
+Scheduling a new test
+We have done all tests.

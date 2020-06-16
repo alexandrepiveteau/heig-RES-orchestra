@@ -210,7 +210,7 @@ system.
 | #  | Topic |
 | ---  | --- |
 |Question | How do we validate that the whole system works, once we have built our Docker image? |
-| | We use `validate.sh` ;). More seriously, we can simply start all the containers, if the musicians are playing correctly (i.e. sending UDP datagrams on the correct multicast address), and the auditor is listening correctly (i.e. receving the UDP datagrams emitted by the musicians), then, a simple TCP connection to the auditor will show us if the musicians are really playing.... |
+| | We use `validate.sh` ;). More seriously, we can simply start all the containers, if the musicians are playing correctly (i.e. sending UDP datagrams on the correct multicast address), and the auditor is listening correctly (i.e. receving the UDP datagrams emitted by the musicians), then, a simple TCP connection to the auditor will show us if the musicians are really playing... |
 
 
 ## Constraints
